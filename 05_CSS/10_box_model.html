@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 길이를 안주면 기본값 auto */
+    .container-1 {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+
+    span {
+      /* 가로/세로 길이 지정 안됨
+        => 레이아웃을 작업하는 용도가 아님, 글자를 제어하는 용도
+      */
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+
+    .parent-1 {
+      /* width: 300px; */
+      /* max-width: 1000px; */
+      min-width: 1000px;
+      height: 200px;
+      background-color: royalblue;
+    }
+
+    .child-1 {
+      /* max-width: 300px; */
+      /* min-width: 400px; */
+      height: 100px;
+      background-color: orange;
+    }
+
+  </style>
+</head>
+<body>
+  <h4>1-1. width, height 실습</h4>
+  <div class="container-1">Hello</div>
+  <span>Hello</span>
+  
+  <h4>1-2. max-, min- 실습</h4>
+  <div class="parent-1">
+    <div class="child-1"></div>
+  </div>
+  
+</body>
+</html>
