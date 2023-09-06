@@ -101,5 +101,32 @@
     <div style="flex-grow: 2; flex-basis: 200px;">nice day!</div>
   </div>
 
+  <!-- Tip! -->
+  <h1>요소 콘텐츠 크기를 같은 비율로 나누기</h1>
+  <h2>flex: 1; flex: 1 1 0%; 의 단축 속성</h2>
+  <div class="flex-container">
+    <div style="flex: 1;">1</div>
+    <div style="flex: 1;">1</div>
+    <div style="flex: 1;">1</div>
+  </div>
+  
+  <h1>요소 콘텐츠 크기를 비율로 나누기</h1>
+  <h2>flex: n; flex: n 1 0%; 의 단축 속성</h2>
+  <h3>주의! border, padding 값에 의해 콘텐츠 크기가 변하면 비율이 정확하게 안 맞을 수 있음</h3>
+  <div class="flex-container">
+    <div style="flex: 1;">1</div>
+    <div style="flex: 2;">2</div>
+    <div style="flex: 3;">3</div>
+  </div>
+  <div class="flex-container">
+    <div style="flex: 1;">1</div>
+    <div style="flex: 2;">2</div>
+    <div style="flex: 1;">1</div>
+    <div style="flex: 1;">1</div>
+    <div style="flex: 3;">3</div>
+    <div style="flex: 2;">2</div>
+  </div>
+
+
 </body>
 </html>
