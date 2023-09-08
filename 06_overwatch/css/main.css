@@ -1,7 +1,17 @@
+/* 화면의 전체 배경 지정 */
+body {
+  background-image: url("../images/bg.jpg");
+  /* height: 100%; */
+  height: 100vh;
+  /* 이미지를 가득 채우고 반복하지 않도록 수정 */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 
 /* 앞에서 만든 각 요소에 선택자를 먼저 작성 */
 .container {
-
+  padding: 50px 0;
 }
 .container .heroes {
   display: flex;
@@ -12,7 +22,7 @@
   flex-wrap: wrap;
 
   /* 영역 확인용(작업이 다 끝나면 삭제) */
-  background-color: orange;
+  /* background-color: orange; */
   justify-content: center;
   max-width: 700px;
 
@@ -99,7 +109,13 @@
 .container .heroes .hero:nth-child(32) .image { background-image: url("../images/hero32.png"); }
 
 .container .logo {
-
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.container .logo img {
+  /* 부모 요소 가로 너비에 100%, 300px보다 커질 수 없음 */
+  width: 100%;
 }
 
 
