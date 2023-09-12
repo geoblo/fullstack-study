@@ -61,9 +61,9 @@ next.addEventListener('click', nextSlide); // 다음 이미지 표시
 // let current = 0;
 
 // function showSlides() {
-//   for (let i = 0; i < slides.length; i++) {
-//     slides[i].style.display = "none"; // 모든 이미지 감춤
-//   }
+//   slides.forEach(function (slideEl) {
+//     slideEl.style.display = 'none'; // 모든 이미지 감춤
+//   });
 //   current++; // 다음 이미지로 이동
 //   if (current > slides.length) { // 마지막 이미지라면
 //     current = 1; // 첫 번째로 이동
