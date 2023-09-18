@@ -91,7 +91,9 @@
       right: -50%;
       transition: 0.5s;
     }
-
+    header .m-nav.active {
+      right: 0;
+    }
     header .m-nav div {
       text-align: right;
     }
@@ -160,7 +162,18 @@
     // Quiz
     // 햄버거 버튼을 클릭하면 .m-nav 요소에 'active'라는 클래스 값 추가(in JS)
     // 닫기 버튼을 클릭하면 .m-nav 요소에 'active'라는 클래스 값 제거(in JS)
-    // 'active'라는 클래스 값이 있으면 요소 보이기!(in CSS)
+    // .m-nav 요소에 'active'라는 클래스 값이 있으면 요소 보이기!(in CSS)
+    const btnHamburger = document.querySelector('.btn-hamburger');
+    const btnClose = document.querySelector('.btn-close');
+    const mobileNav = document.querySelector('.m-nav');
+
+    btnHamburger.addEventListener('click', function () {
+      mobileNav.classList.add('active');
+    });
+
+    btnClose.addEventListener('click', function () {
+      mobileNav.classList.remove('active');
+    });
   </script>
 </body>
 </html>
