@@ -972,11 +972,16 @@ footer .logo {
     margin: 0 auto;
   }
   .season-product .text-group {
-    top: 480px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 480px;
+    /* 방법1 */
+    left: 0;
+    right: 0;
+    margin: auto;
+    /* 방법2 */
+    /* left: 50%;
+    transform: translateX(-50%); */
   }
 }
