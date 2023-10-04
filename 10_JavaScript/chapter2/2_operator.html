@@ -90,6 +90,88 @@
     html    += '</table>';
     document.write(html);
 
+    // 증감 연산자
+    // ++(1씩 증가), --(1씩 감소)
+    document.write('<h2>증감 연산자</h2>');
+    num1 = 10;
+
+    num1--; // num1 = num1 - 1;
+    document.write(num1, '<br>');
+    
+    num1++; // num1 = num1 + 1;
+    document.write(num1, '<br>');
+
+    // 주의!
+    // 다른 연산자와 같이 사용 시 위치(전위, 후위)에 따라 연산이 달라짐
+    num2 = 20;
+    result = num2++; // result = num2; num2 = num2 + 1;
+    document.write(result, ' ', num2, '<br>');
+
+    result = ++num2; // num2 = num2 + 1; result = num2;
+    document.write(result, ' ', num2, '<br>');
+
+    // Quiz
+    num1 = 10;
+    num2 = 20;
+    result = ++num1 + num2--;
+    // result, num1, num2에 저장된 값은?
+    // 순서대로 풀어서 써보기 실습!!
+    // num1 = num1 + 1; // 11
+    // result = num1 + num2; // 31
+    // num2 = num2 - 1; // 19
+    document.write(result, ' ', num1, ' ', num2, '<br>');
+
+    // 비교 연산자
+    // 데이터를 서로 비교하여 결과값으로 true(참), false(거짓)를 반환
+    // >, <, >=, <=, ==, !=, ===(권장), !==(권장)
+    document.write('<h2>비교 연산자</h2>');
+    let a = 10;
+    let b = 20;
+    let c = 10;
+    let f = '20';
+
+    result = a > b; // false
+    document.write(result, '<br>');
+    result = a < b; // true
+    document.write(result, '<br>');
+    result = a <= b; // true
+    document.write(result, '<br>');
+    result = b == f; // true, 값만 비교
+    document.write(result, '<br>');
+    result = b === f; // false, 값과 타입까지 비교(권장)
+    document.write(result, '<br>');
+    result = a != b; // true
+    document.write(result, '<br>');
+    result = b != f; // false, 값만 비교
+    document.write(result, '<br>');
+    result = b !== f; // true, 값과 타입까지 비교(권장)
+    document.write(result, '<br>');
+
+    // 논리 연산자
+    // 피연산자로 true, false로 취급되는 값이 옴
+    // &&(AND): 피연산자 둘 다 true일때만 true, 피자 그리고 떡볶이 사와
+    // ||(OR): 둘 중에 한 개만 true이면 true, 피자 또는 떡볶이 사와
+    // !(NOT): 부정 연산자, true <=> false
+    document.write('<h2>논리 연산자</h2>');
+    a = 10;
+    b = 20;
+    let m = 30;
+    let n = 40;
+
+    // (참고) 연산자의 우선순위 
+    // 1. ( ) - 헷갈리면 사용 권장
+    // 2. 단항 연산자(++, --, !)
+    // 3. 산술 연산자(+, -, *, /, %)
+    // 4. 비교 연산자(>, <, >=, <=, ==, !=, ===, !==)
+    // 5. 논리 연산자(&&, ||)
+    // 6. 대입 연산자(=)
+
+    result = a > b || b >= m || m > n;
+
+
+
+
+
 
 
 
