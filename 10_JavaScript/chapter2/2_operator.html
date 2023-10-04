@@ -166,9 +166,44 @@
     // 5. 논리 연산자(&&, ||)
     // 6. 대입 연산자(=)
 
-    result = a > b || b >= m || m > n;
+    result = a > b || b >= m || m > n; // false || false || false
+    document.write(result, '<br>'); // false
 
+    result = a > b || b >= m || m <= n; // false || false || true
+    document.write(result, '<br>'); // true
 
+    result = a <= b && b >= m && m <= n; // true && false && true
+    document.write(result, '<br>'); // false
+
+    result = a <= b && b <= m && m <= n; // true && true && true
+    document.write(result, '<br>'); // true
+
+    result = !(a > b); // !false
+    document.write(result, '<br>'); // true
+
+    // Short-circuit evaluation(단축 평가)
+    result = a > b && m <= n; // false &&
+    document.write(result, '<br>'); // false
+
+    result = a < b || m > n; // true ||
+    document.write(result, '<br>'); // true
+
+    // (응용) 기본값 설정 시 사용
+    // false로 취급되는 값: 0, null, undefined, ''(빈문자), NaN
+    const dbData = 0;
+    result = dbData || '기본값';
+    document.write(result, '<br>');
+    
+    // (심화) 단축 평가 예제
+    let aa;
+    let bb = null;
+    let cc = undefined;
+    let dd = 4;
+    let ee = 'five';
+    let ff = aa || bb || cc || dd || ee;
+    document.write(ff, '<br>'); // 4
+
+    
 
 
 
