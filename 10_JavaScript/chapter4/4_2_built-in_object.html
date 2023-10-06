@@ -121,8 +121,37 @@
 
     // 1~3 사이의 정수값 난수 발생
     const com = Math.floor(Math.random() * 3) + 1;
+    document.write(`<img src="images/math_img_${com}.jpg">`);
+
+    if (com === gameNum) {
+      document.write(`<img src="images/game_1.jpg">`);
+    } else {
+      document.write(`<img src="images/game_2.jpg">`);
+    }
+    document.write('<br>');
     
-    
+    // Quiz: 맞추는 게임이 아닌 가위, 바위, 보 게임으로 바꿔보기!!
+    document.write('<h1>컴퓨터랑 가위, 바위, 보 게임</h1>');
+    document.write('내가 낸 것');
+    // 내가 낸 것 이미지 출력
+    document.write(`<img src="images/math_img_${gameNum}.jpg">`);
+    document.write('VS 컴퓨터가 낸 것');
+    // 컴퓨터가 낸 것 이미지 출력
+    document.write(`<img src="images/math_img_${com}.jpg">`);
+
+    // 누가 이겼는지 출력!!
+    // gameNum과 com의 차를 이용
+    // 0이면 비김
+    // 1 또는 -2 이면 내가 이김
+    // 그 외는 내가 짐
+    const whoWin = gameNum - com;
+    if (whoWin === 0) {
+      document.write('비겼다!');
+    } else if (whoWin === 1 || whoWin === -2) {
+      document.write('내가 이겼다!');
+    } else {
+      document.write('내가 졌다!');
+    }
     
     
     
