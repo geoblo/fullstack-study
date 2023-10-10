@@ -293,19 +293,58 @@
     document.write('<h4>문자열 변환</h4>');
     document.write(text.replace('you', 'me'), '<br>'); // 첫 번째 일치 항목을 찾아 교체된 새 문자열 반환
     document.write(text.replace(/you/g, 'me'), '<br>'); // g=전역, 모든 항목을 바꾸려면 정규표현식 사용
-    
+    document.write(text.toLowerCase(), '<br>'); // 문자열을 소문자로 변환
+    document.write(text.toUpperCase(), '<br>'); // 문자열을 대문자로 변환
 
-  // (참고) 정규 표현식(정규식)
-  // 문자열에서 특정 문자 조합을 찾기 위한 패턴입니다.
-  // JavaScript에서는 정규 표현식도 객체로서, RegExp의 exec()와 test() 메서드를 사용할 수 있습니다.
-  // String의 match(), matchAll() (ES2020), replace(), replaceAll() (ES2021), search(), split() 메서드와도 함께 사용할 수 있습니다.
-  // 주로 회원가입 시 유효성 검사(패스워드, 이메일, 전화번호 포맷 검증)에 사용
+    // (참고) 정규 표현식(정규식)
+    // 문자열에서 특정 문자 조합을 찾기 위한 패턴입니다.
+    // JavaScript에서는 정규 표현식도 객체로서, RegExp의 exec()와 test() 메서드를 사용할 수 있습니다.
+    // String의 match(), matchAll() (ES2020), replace(), replaceAll() (ES2021), search(), split() 메서드와도 함께 사용할 수 있습니다.
+    // 주로 회원가입 시 유효성 검사(패스워드, 이메일, 전화번호 포맷 검증)에 사용
 
+    document.write('<h4>문자열 길이</h4>');
+    document.write(text.length, '<br>');
 
+    document.write('<h4>문자열 배열로 쪼개기</h4>');
+    const myArray = text.split(' '); // 구분자로 공백 문자 사용
+    console.log(myArray);
+    document.write(myArray[0], '<br>');
+    document.write(myArray[4], '<br>');
 
+    document.write('<h4>문자열 앞, 뒤 공백 제거</h4>');
+    text = '     Hello World!     ';
+    console.log(text);
+    console.log(text.trim());
 
+    // 주민등록번호를 입력받은 후 정보가 노출되지 않도록 뒤의 여섯자리는 ******로 출력하세요.
+    document.write('<h1>주민등록번호 마스킹</h1>');
+    const userSsn = prompt('주민등록번호 입력'); // 123456-1234567 -> 123456-1******
+    const maskSsn = userSsn.substring(0, userSsn.length - 6) + '******';
+    document.write(maskSsn, '<br>');
 
+    // 사용자로부터 입력받은 이메일 주소 유효성 검사(정규표현식을 안쓰는 경우)
+    document.write('<h1>이메일 주소 유효성 검사</h1>');
+    const userEmail = prompt('당신의 이메일 주소는?');
+    const arrUrl = ['.co.kr', 'com', '.net', '.or.kr', '.go.kr'];
 
+    let check1 = false;
+    let check2 = false;
+
+    if (userEmail.includes('@')) { // @가 있는지 검사
+      check1 = true;
+    }
+
+    for (let i = 0; i < arrUrl.length; i++) {
+      if (userEmail.includes(arrUrl[i])) {
+        check2 = true;
+      }
+    }
+
+    if (check1 && check2) {
+      document.write(userEmail);
+    } else {
+      alert('이메일 형식이 잘못되었습니다.');
+    }
   </script>
 </head>
 <body>
