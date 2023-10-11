@@ -84,7 +84,7 @@
 
 
     // Quiz
-    // 1.1 다음 코드의 올바른 출력은?
+    // 1.1 다음 코드의 올바른 출력은? 2)
     var greeting = 'Hello';
 
     greeting = 'Farewell';
@@ -99,11 +99,11 @@
     // 2) Good morning
     // 3) Farewell
 
-    // 1.2 다음 코드의 올바른 출력은?
-    let value = 1;
+    // 1.2 다음 코드의 올바른 출력은? 2)
+    let value = 1; // 전역
 
     if (true) {
-      let value = 2;
+      let value = 2; // 지역
       console.log(value);
     }
     
@@ -113,11 +113,11 @@
     // 2) 2
     // 3) 3
 
-    // 1.3 다음 코드의 올바른 출력은?
-    let a = 100;
+    // 1.3 다음 코드의 올바른 출력은? 2)
+    let a = 100; // 전역
 
     if (a > 50) {
-      let a = 10;
+      let a = 10; // 지역
     }
 
     console.log(a);
@@ -126,7 +126,7 @@
     // 2) 100
     // 3) 50
 
-    // 1.4 다음 코드의 올바른 출력은?
+    // 1.4 다음 코드의 올바른 출력은? 2)
     console.log(b);
 
     const b = 1;
