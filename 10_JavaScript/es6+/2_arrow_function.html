@@ -65,7 +65,7 @@
 
 
     // Quiz 
-    // 2.1 다음 중 화살표 함수를 문법에 맞게 활용한 예는?
+    // 2.1 다음 중 화살표 함수를 문법에 맞게 활용한 예는? b)
     let arr = [1, 2, 3];
 
     // a)
@@ -83,21 +83,38 @@
       console.log(arg);
     }
 
+    const testFunc2 = arg => {
+      console.log(arg);
+    };
+
     // 2.3
     function add(num1, num2) {
       return num1 + num2;
     }
 
+    const add2 = (num1, num2) => num1 + num2;
+
     // 2.4
-    function ask(question, yes, no) {
+    // function ask(question, yes, no) {
+    //   if (confirm(question)) yes();
+    //   else no();
+    // }
+
+    // ask(
+    //   '동의하십니까?',
+    //   function() { alert('동의하셨습니다.'); },
+    //   function() { alert('취소 버튼을 누르셨습니다.'); }
+    // );
+
+    const ask2 = (question, yes, no) => {
       if (confirm(question)) yes();
       else no();
-    }
+    };
 
-    ask(
+    ask2(
       '동의하십니까?',
-      function() { alert('동의하셨습니다.'); },
-      function() { alert('취소 버튼을 누르셨습니다.'); }
+      () => alert('동의하셨습니다.'),
+      () => alert('취소 버튼을 누르셨습니다.')
     );
   </script>
 </head>
