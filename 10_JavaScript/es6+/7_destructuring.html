@@ -122,11 +122,12 @@
     const arr = ['one', 'two', 'three'];
 
     // 여기에 코드를 작성하자.
+    const [one, two, three] = arr;
 
     // 예상결과
-    // console.log(one); // one
-    // console.log(two); // two
-    // console.log(three); // three
+    console.log(one); // one
+    console.log(two); // two
+    console.log(three); // three
 
     // 7.2 다음 작업을 수행하는 코드를 작성하자.
     const user = {
@@ -138,6 +139,7 @@
     // nickname 프로퍼티의 값을 변수 nickname에 할당하세요.
     // years 프로퍼티의 값을 변수 ages에 할당하세요.
     // isAdmin 프로퍼티의 값을 변수 isAdmin에 할당하세요. isAdmin이라는 프로퍼티가 없으면 false를 할당하세요.
+    const { nickname, years: ages, isAdmin = false } = user;
 
     // 7.3 최대 급여 계산하기
     // 급여 관련 정보가 저장된 salaries가 있다고 가정
@@ -153,13 +155,33 @@
       {
         name: 'Mary',
         salary: 250
-      }
+      },
+      {
+        name: 'Alice',
+        salary: 500
+      },
     ];
 
     // 가장 많은 급여를 받는 사람의 이름을 반환해주는 함수 topSalary(salaries)를 만들어봅시다. 
     // 조건은 아래와 같습니다.
     // salaries가 비어있으면 함수는 null을 반환해야 합니다.
     // 최대 급여를 받는 사람이 여러 명이라면 그 중 아무나 한 명 반환하면 됩니다.
+
+    function topSalary(salaryList) {
+      let max = 0;
+      let maxName = null;
+
+      // 여기에 코드를 작성하자.
+      // 힌트: for of 루프 + 객체 구조 분해 할당 사용
+      for (const { name, salary } of salaryList) {
+        if (max < salary) {
+          max = salary;
+          maxName = name;
+        }
+      }
+
+      return maxName;
+    }
 
     console.log(topSalary(salaries));
     // 예상 결과: Pete
