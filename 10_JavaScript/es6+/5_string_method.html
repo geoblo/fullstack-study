@@ -40,14 +40,14 @@
 
 
     // Quiz 
-    // 5.1 다음 코드의 올바른 출력은?
+    // 5.1 다음 코드의 올바른 출력은? 1)
     const code1 = 'ABCDEFGHI';
     code1.startsWith('EFG', 4);
 
     // 1) true
     // 2) false
 
-    // 5.2 다음 코드의 올바른 출력은?
+    // 5.2 다음 코드의 올바른 출력은? 2)
     const code2 = 'ABCDEF';
     code2.endsWith('def');
 
@@ -58,7 +58,8 @@
     let str = 'Na';
     let bat = 'BatMan';
 
-    // let batman = ...
+    let batman = `${str.repeat(8)} ${bat}`;
+    // let batman = str.repeat(8) + ' ' + bat;
     console.log(batman);
     // 예상 결과: NaNaNaNaNaNaNaNa BatMan
   </script>
