@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- * -->
+  <h2>입력한 값보다 나이가 많은 사람 찾기</h2>
+  <input type="number" id="ageToCheck" value="30">
+  <button type="button" onclick="searchFunc()">검색</button>
+  
+  <script>
+    // 유용한 배열 메소드(ES5)
+
+    // 1. map(function(currentValue, index))
+    // 기존 배열의 요소를 이용하여 새로운 배열을 만듦
+    // 기존 배열의 각 요소에 대해 한 번씩 함수를 호출하고 반환하는 값으로 새로운 배열을 만듦
+    // 원래 배열을 변경하지 않음
+
+    // 배열의 모든 값에 10을 곱한 새 배열 만들기
+    const numbers = [65, 44, 12, 4];
+    // [650, 440, 120, 40]
+    // const newNumbers = numbers.map((num) => {
+    //   return num * 10;
+    // });
+    const newNumbers = numbers.map(num => num * 10);
+    console.log(newNumbers);
+
+    // 각 사람의 전체 이름을 가진 새 배열 만들기
+    const persons = [
+      { firstName: 'Goni', lastName: 'Kim' },
+      { firstName: 'Zero', lastName: 'Cho' },
+      { firstName: 'Velopert', lastName: 'Kim' }
+    ];
+
+    // Quiz
+    // 예상 결과: ['Goni Kim', 'Zero Cho', 'Velopert Kim']
+    // const newPersons = persons.map((item) => {
+    //   return `${item.firstName} ${item.lastName}`;
+    // });
+    const newPersons = persons.map(item => `${item.firstName} ${item.lastName}`);
+    console.log(newPersons);
+
+    // 2. filter(function(currentValue, index))
+    // 제공된 테스트 함수를 통과하는 요소들만 따로 추출하여 새 배열을 만듦
+    // 테스트 함수에서는 true 또는 false를 반환해야 하며, 여기서 true를 반환하는 경우만 새로운 배열에 포함됨
+    // 원래 배열을 변경하지 않음
+    
+    // ages 배열에서 19세 이상인 모든 값들로 새 배열을 만들어 반환
+    const ages = [32, 33, 16, 40];
+    // 예상 결과: [32, 33, 40]
+    // const newAges = ages.filter((age) => {
+    //   return age >= 19;
+    // });
+    const newAges = ages.filter(age => age >= 19);
+    console.log(newAges);
+
+    // 활용Tip: 검색 기능(또는 필터링 기능) 또는 제거 기능 만들때 유용
+    // * 참조
+    const students = [
+      { name: 'Goni', age: 36 },
+      { name: 'Pony', age: 32 },
+      { name: 'Tony', age: 12 },
+      { name: 'Moly', age: 24 },
+      { name: 'Noni', age: 45 }
+    ];
+
+    const searchFunc = () => {
+      const ageToCheckValue = document.querySelector('#ageToCheck').value;
+      // console.log(ageToCheckValue);
+      const searchStudents = students.filter((student) => {
+        return student.age > ageToCheckValue;
+      });
+      console.log(searchStudents);
+    };
+
+    // Quiz
+    // 배열의 filter() 함수를 사용하여 id 값이 2인 상품을 제거해보세요.
+    const products = [
+      { id: '1', title: 'snack', price: 1000 },
+      { id: '2', title: 'pen', price: 2000 },
+      { id: '3', title: 'candy', price: 500 },
+      { id: '4', title: 'note', price: 1800 },
+      { id: '5', title: 'case', price: 2300 }
+    ];
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>
