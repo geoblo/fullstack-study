@@ -95,6 +95,7 @@
 
 
     // Quiz
+    // 15.1 다음 코드의 올바른 출력은? 3)
     const user = {
       name: 'Goni',
       age: 27,
@@ -137,7 +138,8 @@
     console.log(universityMajor);
 
     // 옵셔널 체이닝 사용시
-    // 여기에 코드 작성
+    universityMajor = person.education?.university?.major;
+    console.log(universityMajor);
   </script>
 </head>
 <body>
