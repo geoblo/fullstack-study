@@ -9,6 +9,8 @@ import Clock from './chapter4/Clock';
 import PropsUse from './chapter5/5.3/PropsUse';
 import CommentList from './chapter5/CommentList';
 import CommentEx from './chapter5/5.6/CommentEx';
+import NotificationList from './chapter6/NotificationList';
+import Counter from './chapter7/7.2/Counter';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -29,7 +31,7 @@ root.render(
   // <Library />
 
   // 5장 예제
-  <PropsUse />
+  // <PropsUse />
   // <CommentList />
   // <CommentEx 
   //   author={{
@@ -39,6 +41,12 @@ root.render(
   //   text="첫 방문합니다. 또 올게요." 
   //   date="2023-10-18" 
   // />
+
+  // 6장 예제
+  // <NotificationList />
+
+  // 7장 예제
+  <Counter />
 );
 
 // If you want to start measuring performance in your app, pass a function
