@@ -29,16 +29,16 @@ root.render(
   // <Library />
 
   // 5장 예제
-  // <PropsUse />
+  <PropsUse />
   // <CommentList />
-  <CommentEx 
-    author={{
-      avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png', 
-      name: '김재현'
-    }}
-    text="첫 방문합니다. 또 올게요." 
-    date="2023-10-18" 
-  />
+  // <CommentEx 
+  //   author={{
+  //     avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png', 
+  //     name: '김재현'
+  //   }}
+  //   text="첫 방문합니다. 또 올게요." 
+  //   date="2023-10-18" 
+  // />
 );
 
 // If you want to start measuring performance in your app, pass a function
