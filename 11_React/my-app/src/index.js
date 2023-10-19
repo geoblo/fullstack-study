@@ -14,6 +14,11 @@ import Counter from './chapter7/7.2/Counter';
 import SetStateMerge from './chapter7/7.2/SetStateMerge';
 import Toggle from './chapter8/8.1/Toggle';
 import MyButton from './chapter8/8.2/MyButton';
+import ConfirmButton from './chapter8/ConfirmButton';
+import Greeting from './chapter9/9.1/Greeting';
+import LoginControl from './chapter9/9.2/LoginControl';
+import LoginControlRefactoring from './chapter9/9.3/LoginControlRefactoring';
+import Mailbox from './chapter9/9.3/Mailbox';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -25,6 +30,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 //     <Clock />
 //   );
 // }, 1000);
+
+// 9장 예제
+const messages = ['React', 'Re: React', 'Re:Re: React'];
+// const messages = [];
 
 root.render(
   // <App />
@@ -54,7 +63,15 @@ root.render(
 
   // 8장 예제
   // <Toggle />
-  <MyButton />
+  // <MyButton />
+  // <ConfirmButton />
+
+  // 9장 예제
+  // <Greeting isLoggedIn={true} />
+  // <LoginControl />
+  // <LoginControlRefactoring />
+  <Mailbox unreadMessages={messages} />
+
 
 
 
