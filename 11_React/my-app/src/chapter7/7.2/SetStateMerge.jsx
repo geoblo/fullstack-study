@@ -5,22 +5,26 @@ function SetStateMerge() {
 
   const handleAdd = () => {
     console.log('handleAdd Start');
-    setResult(result + 5);
+    // setResult(result + 5);
+    setResult(result => result + 5);
     console.log('handleAdd end');
   };
   const handleSub = () => {
     console.log('handleSub Start');
-    setResult(result - 3);
+    // setResult(result - 3);
+    setResult(result => result - 3);
     console.log('handleSub end');
   };
   const handleMul = () => {
     console.log('handleMul Start');
-    setResult(result * 2);
+    // setResult(result * 2);
+    setResult(result => result * 2);
     console.log('handleMul end');
   };
   const handleDiv = () => {
     console.log('handleDiv Start');
-    setResult(result / 2);
+    // setResult(result / 2);
+    setResult(result => result / 2);
     console.log('handleDiv end');
   };
   const handleMixCalc = () => {
