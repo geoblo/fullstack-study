@@ -21,6 +21,8 @@ import LoginControlRefactoring from './chapter9/9.3/LoginControlRefactoring';
 import Mailbox from './chapter9/9.3/Mailbox';
 import MainPage from './chapter9/9.4/MainPage';
 import LandingPage from './chapter9/LandingPage';
+import NumberList from './chapter10/10.1/NumberList';
+import ListKey from './chapter10/10.2/ListKey';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -74,7 +76,11 @@ root.render(
   // <LoginControlRefactoring />
   // <Mailbox unreadMessages={messages} />
   // <MainPage />
-  <LandingPage />
+  // <LandingPage />
+
+  // 10장 예제
+  // <NumberList />
+  <ListKey />
 
 
 
