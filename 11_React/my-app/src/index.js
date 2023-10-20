@@ -20,6 +20,7 @@ import LoginControl from './chapter9/9.2/LoginControl';
 import LoginControlRefactoring from './chapter9/9.3/LoginControlRefactoring';
 import Mailbox from './chapter9/9.3/Mailbox';
 import MainPage from './chapter9/9.4/MainPage';
+import LandingPage from './chapter9/LandingPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -72,7 +73,8 @@ root.render(
   // <LoginControl />
   // <LoginControlRefactoring />
   // <Mailbox unreadMessages={messages} />
-  <MainPage />
+  // <MainPage />
+  <LandingPage />
 
 
 
