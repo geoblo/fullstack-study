@@ -25,6 +25,11 @@ import NumberList from './chapter10/10.1/NumberList';
 import ListKey from './chapter10/10.2/ListKey';
 import AttendanceBook from './chapter10/AttendanceBook';
 import NameForm from './chapter11/11.2/NameForm';
+import EssayForm from './chapter11/11.3/EssayForm';
+import FlavorForm from './chapter11/11.3/FlavorForm';
+import TextInputWithFocusButton from './chapter7/7.6/TextInputWithFocusButton';
+import FileInput from './chapter11/11.3/FileInput';
+import Reservation from './chapter11/11.4/Reservation';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -66,6 +71,7 @@ root.render(
   // 7장 예제
   // <Counter />
   // <SetStateMerge />
+  // <TextInputWithFocusButton />
 
   // 8장 예제
   // <Toggle />
@@ -86,7 +92,11 @@ root.render(
   // <AttendanceBook />
 
   // 11장 예제
-  <NameForm />
+  // <NameForm />
+  // <EssayForm />
+  // <FlavorForm />
+  // <FileInput />
+  <Reservation />
 
 
 
