@@ -20,16 +20,41 @@ import { useState } from "react";
 // 2) 각각의 state를 여러 개 만들어도 되고 객체 형태로 한번에 관리해도 됨
 
 function SignUp() {
-  const [name, setName] = useState('');
-  const [gender, setGender] = useState('남자');
+  // const [name, setName] = useState('');
+  // const [gender, setGender] = useState('남자');
 
-  const handleChangeName = (e) => {
-    setName(e.target.value);
+  // 객체 형태로 관리
+  const [inputs, setInputs] = useState({
+    name: '',
+    gender: '남자'
+  });
+  const { name, gender } = inputs;
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+
+    // 방법1
+    // const copyObj = {
+    //   ...inputs
+    // };
+    // copyObj[name] = value;
+    // setInputs(copyObj);
+
+    // 방법2
+    setInputs(inputs => ({
+      ...inputs,
+      [name]: value
+    }));
   };
 
-  const handleChangeGender = (e) => {
-    setGender(e.target.value);
-  };
+  // const handleChangeName = (e) => {
+  //   setName(e.target.value);
+  // };
+
+  // const handleChangeGender = (e) => {
+  //   setGender(e.target.value);
+  // };
 
   const handleSubmit = () => {
     alert(`이름: ${name}, 성별: ${gender}`);
@@ -39,14 +64,16 @@ function SignUp() {
     <form>
       <label>
         이름:
-        <input type="text" onChange={handleChangeName} value={name} />
+        {/* <input type="text" onChange={handleInputChange} value={name} /> */}
+        <input type="text" name="name" onChange={handleInputChange} value={name} />
       </label>
 
       <br />
 
       <label>
         성별:
-        <select onChange={handleChangeGender} value={gender}>
+        {/* <select onChange={handleInputChange} value={gender}> */}
+        <select name="gender" onChange={handleInputChange} value={gender}>
           <option value="남자">남자</option>
           <option value="여자">여자</option>
         </select>

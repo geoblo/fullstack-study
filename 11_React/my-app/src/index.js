@@ -99,8 +99,8 @@ root.render(
   // <FlavorForm />
   // <FileInput />
   // <Reservation />
-  <ReservationRefactoring />
-  // <SignUp />
+  // <ReservationRefactoring />
+  <SignUp />
 
 
 

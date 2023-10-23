@@ -12,11 +12,12 @@ function ReservationRefactoring() {
   const { breakfast, numberOfGuests, roomType } = inputs; // 구조 분해 할당을 통해 값 추출
 
   const handleInputChange = (e) => {
-    // console.log(e.target); // 현재 이벤트가 발생한 대상 객체
+    // debugger;
+    console.log(e.target); // 현재 이벤트가 발생한 대상 객체
     const { type, name, checked, value } = e.target;
     // console.log(type, name, checked, value);
     const inputValue = type === 'checkbox' ? checked : value;
-    console.log(name, inputValue);
+    // console.log(name, inputValue);
 
     // 중요!!
     // 리액트 상태에서 객체를 수정해야 할 때에는,
@@ -50,7 +51,7 @@ function ReservationRefactoring() {
     // 2_arrow_function - 객체를 암시적 반환하기
     // 9_spread_rest - 객체의 복사, 결합
     // 10_object_literal - 객체의 속성을 동적으로 정의하기
-    
+
     // 결론: 리액트에서 객체를 업데이트 할 때에는 기존 객체를 직접 수정하면 안되고
     // 새로운 객체(기존 객체의 복사본)를 만들어서 그 객체에 변화를 주고 마지막으로 set함수에 넣어줘야 함
   };
