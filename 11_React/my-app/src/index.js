@@ -33,6 +33,7 @@ import Reservation from './chapter11/11.4/Reservation';
 import SignUp from './chapter11/SignUp';
 import ReservationRefactoring from './chapter11/11.4/ReservationRefactoring';
 import UnitCalculator from './chapter12/UnitCalculator';
+import WelcomeDialog from './chapter13/13.1.1.1/WelcomeDialog';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -104,7 +105,10 @@ root.render(
   // <SignUp />
 
   // 12장 예제
-  <UnitCalculator />
+  // <UnitCalculator />
+
+  // 13장 예제
+  <WelcomeDialog />
 
 
 
