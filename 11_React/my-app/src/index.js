@@ -32,6 +32,7 @@ import FileInput from './chapter11/11.3/FileInput';
 import Reservation from './chapter11/11.4/Reservation';
 import SignUp from './chapter11/SignUp';
 import ReservationRefactoring from './chapter11/11.4/ReservationRefactoring';
+import UnitCalculator from './chapter12/UnitCalculator';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -100,7 +101,10 @@ root.render(
   // <FileInput />
   // <Reservation />
   // <ReservationRefactoring />
-  <SignUp />
+  // <SignUp />
+
+  // 12장 예제
+  <UnitCalculator />
 
 
 
