@@ -38,6 +38,8 @@ import SplitPaneSection from './chapter13/13.1.1.2/SplitPaneSection';
 import DialogContainer from './chapter13/13.1.2/DialogContainer';
 import SignUpDialog from './chapter13/13.1.3/SignUpDialog';
 import ProfileCard from './chapter13/ProfileCard';
+import StyledPage from './chapter15/StyledPage';
+import Blocks from './chapter15/theme/Blocks';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -116,7 +118,11 @@ root.render(
   // <SplitPaneSection />
   // <DialogContainer />
   // <SignUpDialog />
-  <ProfileCard />
+  // <ProfileCard />
+
+  // 15장 예제
+  // <StyledPage />
+  <Blocks />
 
 
 

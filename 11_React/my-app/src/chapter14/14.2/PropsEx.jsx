@@ -1,6 +1,6 @@
 // 개념 설명용 예제
 function App() {
-  return <Toolbar theme="dark" />
+  return <Toolbar theme="dark" />;
 }
 
 function Toolbar(props) {
