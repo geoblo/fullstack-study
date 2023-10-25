@@ -1,4 +1,11 @@
 import React from 'react';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MainPage from './pages/MainPage';
+import PlacePage from './pages/PlacePage';
+import GamePage from './pages/GamePage';
+import HotGamePage from './pages/HotGamePage';
+import NewGamePage from './pages/NewGamePage';
+import NoMatchPage from './pages/NoMatchPage';
 
 // react-router-dom 설치하기
 // npm install react-router-dom
@@ -34,9 +41,34 @@ import React from 'react';
 
 function SimpleRouter(props) {
   return (
-    <div>
-      
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* /로 접속하면 MainPage 컴포넌트가 렌더링 */}
+        {/* /places로 접속하면 PlacePage 컴포넌트가 렌더링 */}
+        {/* /games로 접속하면 GamePage 컴포넌트가 렌더링 */}
+        <Route path='/' element={<MainPage />} />
+        <Route path='/places' element={<PlacePage />} />
+        <Route path='/games' element={<GamePage />} />
+
+        {/* 방법1. 서브 경로 설정 */}
+        {/* <Route path='/games/hot' element={<HotGamePage />} />
+        <Route path='/games/new' element={<NewGamePage />} /> */}
+
+        {/* 방법2. Nested Route 방식 */}
+        {/* 서브 경로 방식과 차이점: 부모 엘리먼트 + 자식 엘리먼트가 같이 보임 */}
+        {/* 부모 안에 자식들을 렌더링해 보여줌(어디에 보여줄지는 부모안에서 Outlet 컴포넌트로 지정) */}
+        {/* 활용 예: 헤더, 푸터 사이에 메인 영역 등 */}
+        {/* Nested 안에 또 Nested 가능 */}
+        <Route path='/games' element={<GamePage />}>
+          <Route path='hot' element={<HotGamePage />} />
+          <Route path='new' element={<NewGamePage />} />
+        </Route>
+
+        {/* 위에 설정한 라우팅 경로 이외에 경우 */}
+        {/* *의 의미는 match anything */}
+        <Route path='*' element={<NoMatchPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
