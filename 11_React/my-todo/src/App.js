@@ -91,6 +91,22 @@ function App() {
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
+  // todos 배열의 특정 요소를 수정하기 위한 함수 정의
+  const handleToggle = (id) => {
+    // 방법1
+    // const copyTodos = [...todos];
+    // const target = todos.find(todo => todo.id === id);
+    // console.log(target);
+    // target.checked = !target.checked;
+    // const targetIndex = todos.findIndex(todo => todo.id === id);
+    // copyTodos[targetIndex] = target;
+    // console.log(copyTodos);
+    // setTodos(copyTodos);
+
+    // 방법2 - 배열의 메소드 이용
+    // 불변성을 지키면서 배열의 특정 요소를 업데이트 해야할 때 map() 활용
+    setTodos(todos.map(todo => todo.id === id ? { ...todo, checked: !todo.checked } : todo));
+  };
 
   return (
     <>
@@ -98,10 +114,25 @@ function App() {
       <GlobalStyle />
       <TodoTemplate>
         <TodoInsert onInsert={handleInsert} />
-        <TodoList todos={todos} onRemove={handleRemove} />
+        <TodoList todos={todos} onRemove={handleRemove} onToggle={handleToggle} />
       </TodoTemplate>
     </>
   );
 }
 
 export default App;
+
+// HTML 웹 스토리지란?
+// 브라우저에서 제공하는 데이터 저장소
+// 사용자의 브라우저 내에 로컬로 데이터를 저장할 수 있음
+// key-value 형태로 저장
+// 최대 5MB까지 문자만 저장가능
+// 콘솔 창에서 연습해보기
+
+// 웹 스토리지는 origin(도메인 및 프로토콜)당입니다. 
+// 같은 출처의 모든 페이지는 동일한 데이터를 저장하고 액세스할 수 있습니다.
+
+// HTML 웹 스토리지 객체
+// HTML 웹 스토리지는 클라이언트에 데이터를 저장하기 위한 두 가지 객체를 제공합니다.
+// window.localStorage - 만료 날짜 없이 데이터를 저장
+// window.sessionStorage - 한 세션에 대한 데이터 저장(브라우저 탭을 닫으면 데이터가 손실됨)
