@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PostListItem from './PostListItem';
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,7 +22,9 @@ function PostList(props) {
   return (
     <Wrapper>
       {/* Quiz: posts 배열을 반복 렌더링하기 */}
-      {}
+      {posts.map((post) => {
+        return <PostListItem key={post.id} post={post} />;
+      })}
     </Wrapper>
   );
 }
