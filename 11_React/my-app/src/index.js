@@ -43,6 +43,7 @@ import Blocks from './chapter15/theme/Blocks';
 import ThemeApp from './chapter15/theme/ThemeApp';
 import ComponentVariable from './chapter7/7.6/ComponentVariable';
 import SimpleRouter from './chapter16/SimpleRouter';
+import CounterEffect from './chapter7/7.3/ex1/CounterEffect';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -86,6 +87,7 @@ root.render(
   // <SetStateMerge />
   // <TextInputWithFocusButton />
   // <ComponentVariable />
+  <CounterEffect />
 
   // 8장 예제
   // <Toggle />
@@ -130,7 +132,7 @@ root.render(
   // <ThemeApp />
 
   // 16장 예제
-  <SimpleRouter />
+  // <SimpleRouter />
 
 
 

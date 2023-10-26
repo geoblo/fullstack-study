@@ -64,7 +64,6 @@ function PostViewPage(props) {
   const post = data.find((item) => {
     return item.id === postId;
   });
-  console.log(post);
 
   return (
     <Wrapper>
