@@ -25,7 +25,7 @@ npm install react-router-dom styled-components
 - 글 작성 기능
   - PostWritePage
 - 공통 컴포넌트
-  - Button, Textarea
+  - Button, TextInput
 
 # 폴더 구성하기(폴더 구성에 정답은 없음)
 src
