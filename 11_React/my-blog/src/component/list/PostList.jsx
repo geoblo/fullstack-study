@@ -14,11 +14,15 @@ const Wrapper = styled.div`
   }
 `;
 
+// map() 함수를 사용하여 PostListItem을 반복 렌더링하는 컴포넌트
 function PostList(props) {
+  const { posts } = props;
+
   return (
-    <div>
-      
-    </div>
+    <Wrapper>
+      {/* Quiz: posts 배열을 반복 렌더링하기 */}
+      {}
+    </Wrapper>
   );
 }
 

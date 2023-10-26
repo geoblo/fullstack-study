@@ -9,11 +9,12 @@ const StyledTextarea = styled.textarea`
   line-height: 20px;
 `;
 
+// 공통 텍스트 입력 컴포넌트
 function TextInput(props) {
+  const { height, value, onChange } = props;
+
   return (
-    <div>
-      
-    </div>
+    <StyledTextarea height={height} value={value} onChange={onChange} />
   );
 }
 
