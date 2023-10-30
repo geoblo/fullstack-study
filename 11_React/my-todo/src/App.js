@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import TodoTemplate from "./components/TodoTemplate";
 import TodoInsert from "./components/TodoInsert";
 import TodoList from "./components/TodoList";
+import Modal from "./components/Modal";
 
 // 패키지 설치
 // npm install styled-components styled-reset react-icons
@@ -52,6 +53,30 @@ function App() {
     //   checked: false
     // }
   ]);
+
+  // 수정하기 추가 실습
+  const [showModal, setShowModal] = useState(false);
+  const handleOpenModal = (id) => {
+    setEditTodo(todos.find(todo => todo.id === id));
+    setShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setEditTodo({});
+    setShowModal(false);
+  };
+  const [editTodo, setEditTodo] = useState({});
+  const handleChange = (e) => {
+    setEditTodo({
+      ...editTodo,
+      text: e.target.value
+    });
+  };
+  const handleEdit = () => {
+    setTodos(todos.map((todo) => 
+      todo.id === editTodo.id ? editTodo : todo
+    ));
+    handleCloseModal();
+  };
 
   // 로컬 스토리지에서 가져오기
   useEffect(() => {
@@ -131,8 +156,19 @@ function App() {
       <GlobalStyle />
       <TodoTemplate>
         <TodoInsert onInsert={handleInsert} />
-        <TodoList todos={todos} onRemove={handleRemove} onToggle={handleToggle} />
+        <TodoList todos={todos} onRemove={handleRemove} onToggle={handleToggle} onModal={handleOpenModal} />
       </TodoTemplate>
+
+      {/* 수정하기 추가 실습 */}
+      {showModal && (
+        <Modal 
+          title="일정 수정" 
+          onCloseModal={handleCloseModal}
+          onEdit={handleEdit}
+        >
+          <input type="text" value={editTodo.text} onChange={handleChange} />
+        </Modal>
+      )}
     </>
   );
 }

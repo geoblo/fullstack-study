@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdCheckBox, MdCheckBoxOutlineBlank, MdRemoveCircleOutline } from 'react-icons/md';
+import { MdCheckBox, MdCheckBoxOutlineBlank, MdEdit, MdRemoveCircleOutline } from 'react-icons/md';
 import styled, { css } from 'styled-components';
 
 const TodoListItemWrapper = styled.div`
@@ -58,10 +58,24 @@ const Remove = styled.div`
   }
 `;
 
+// 수정하기 추가 실습
+const Edit = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #ff6b6b;
+  cursor: pointer;
+  margin-right: 10px;
+
+  &:hover {
+    color: #ff8787;
+  }
+`;
+
 // 각 할 일 항목에 대한 정보를 보여주는 컴포넌트
 // todo 객체를 props로 받아와 상태에 따라 다른 스타일의 UI를 보여줌
 function TodoListItem(props) {
-  const { todo: { id, text, checked }, onRemove, onToggle } = props;
+  const { todo: { id, text, checked }, onRemove, onToggle, onModal } = props;
 
   return (
     <TodoListItemWrapper>
@@ -69,6 +83,12 @@ function TodoListItem(props) {
         {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
       </CheckBox>
       <Text checked={checked}>{text}</Text>
+      
+      {/* 수정하기 추가 실습 */}
+      <Edit onClick={() => { onModal(id); }}>
+        <MdEdit />
+      </Edit>
+
       <Remove onClick={() => { onRemove(id); }}>
         <MdRemoveCircleOutline />
       </Remove>
