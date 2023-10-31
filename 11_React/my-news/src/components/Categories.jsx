@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 // 고정값들은 전역 변수로 선언하여 사용
 // 여기서 name은 실제 카테고리 값, text는 렌더링할 때 사용할 한글 카테고리명
@@ -67,9 +69,16 @@ const Category = styled(NavLink)`
 
 function Categories(props) {
   return (
-    <div>
-      
-    </div>
+    <CategoriesBlock>
+      {categories.map(c => (
+        <Category
+          key={c.name}
+          to={c.name === 'all' ? '/' : `/${c.name}`}
+        >
+          {c.text}
+        </Category>
+      ))}
+    </CategoriesBlock>
   );
 }
 
