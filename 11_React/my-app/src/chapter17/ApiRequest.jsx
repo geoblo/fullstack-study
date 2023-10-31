@@ -1,12 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from "axios";
 
 function ApiRequest(props) {
-  // 
+  // 서버에서 가져온 데이터를 담을 state
+  const [data, setData] = useState(null);
+
+  // 1. Promise/then
+  const handleRequestById = (id) => {
+    // jsonplaceholder에서 제공하는 테스트용 API를 호출
+    axios.get(`https://jsonplaceholder.typicode.com/photos/${id}`)
+      .then((response) => {
+        console.log(response);
+        setData(response.data); // axios 라이브러리 JSON -> 객체로 변환해 주는 작업을 자동으로 해줌
+      })
+      .catch((error) => { // 요청 실패한 경우 에러 핸들링
+        console.error(error);
+      });
+  };
+
+  // Quiz
+  // 2. async/await로 리팩터링
+  const handleRequestByIdAsync = async (id) => {
+    try {
+      const response = await axios.get(`https://jsonplaceholder.typicode.com/photos/${id}`);
+      setData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-    <div>
-      
-    </div>
+    <>
+      <div>
+        <button onClick={() => handleRequestById(400)}>불러오기</button>
+        <button onClick={() => setData(null)}>비우기</button>
+        <button onClick={() => handleRequestByIdAsync(400)}>불러오기</button>
+      </div>
+      {data && (
+        <>
+          <textarea cols="70" rows="8" value={JSON.stringify(data, null, 2)} readOnly />
+          <p>{data.title}</p>
+          <img src={data.thumbnailUrl} alt="thumbnail" />
+        </>
+      )}
+    </>
   );
 }
 

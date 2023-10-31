@@ -47,6 +47,7 @@ import CounterEffect from './chapter7/7.3/ex1/CounterEffect';
 import EffectSummary from './chapter7/7.3/ex2/EffectSummary';
 import EffectContainer from './chapter7/7.3/ex2/EffectContainer';
 import TimerContainer from './chapter7/7.3/ex3/TimerContainer';
+import ApiRequest from './chapter17/ApiRequest';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -93,7 +94,7 @@ root.render(
   // <CounterEffect />
   // <EffectSummary />
   // <EffectContainer />
-  <TimerContainer />
+  // <TimerContainer />
 
   // 8장 예제
   // <Toggle />
@@ -139,7 +140,9 @@ root.render(
 
   // 16장 예제
   // <SimpleRouter />
-
+  
+  // 17장 예제
+  <ApiRequest />
 
 
 
