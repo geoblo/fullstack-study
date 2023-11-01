@@ -2,7 +2,9 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 
 function ProductListItem(props) {
-  const { product: { title, price, imagePath } } = props;
+  // const { product: { title, price, imagePath } } = props;
+  const { product } = props;
+  const { title, price, imagePath } = product;
 
   return (
     <Col md={4}>
