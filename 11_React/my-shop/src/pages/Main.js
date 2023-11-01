@@ -7,6 +7,7 @@ import axios from "axios";
 import yonexImg from "../images/yonex.jpg";
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProducts, selectProductList } from '../features/product/productSlice';
+import ProductListItem from '../components/ProductListItem';
 
 const MainBackground = styled.div`
   height: 500px;
@@ -70,6 +71,9 @@ function Main(props) {
               2) productList 배열을 반복하며 ProductListItem 컴포넌트를 렌더링 하기
               3) 상품 정보를 props로 넘겨서 데이터 바인딩 하기
             */}
+            {productList.map((product) => (
+              <ProductListItem key={product.id} product={product} />
+            ))}
           </Row>
         </Container>
       </section>
