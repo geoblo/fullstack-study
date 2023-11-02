@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import axios from "axios";
+import { PulseLoader } from "react-spinners";
 
 // 리액트(JS)에서 이미지 파일 가져오기
 import yonexImg from "../images/yonex.jpg";
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllProducts, selectProductList } from '../features/product/productSlice';
+import { addMoreProducts, getAllProducts, getMoreProductsAsync, selectProductList, selectStatus } from '../features/product/productSlice';
 import ProductListItem from '../components/ProductListItem';
+import { getMoreProducts } from '../api/productAPI';
 
 const MainBackground = styled.div`
   height: 500px;
@@ -20,6 +22,7 @@ const MainBackground = styled.div`
 function Main(props) {
   const dispatch = useDispatch();
   const productList = useSelector(selectProductList);
+  const status = useSelector(selectStatus); // API 요청 상태(로딩 상태)
 
   // 처음 마운트 됐을 때 서버에 상품 목록 데이터를 요청하고
   // 그 결과를 리덕스 스토어에 전역 상태로 저장
@@ -34,6 +37,14 @@ function Main(props) {
       });
   }, []);
 
+  const handleGetMoreProducts = async () => {
+    const result = await getMoreProducts();
+    dispatch(addMoreProducts(result));
+  };
+
+  const handleGetMoreProductsAsync = () => {
+    dispatch(getMoreProductsAsync());
+  };
 
   return (
     <>
@@ -74,8 +85,33 @@ function Main(props) {
             {productList.map((product) => (
               <ProductListItem key={product.id} product={product} />
             ))}
+
+            {/* 로딩 만들기 */}
+            {status === 'loading' &&
+              <div>
+                <PulseLoader
+                  color="#36d7b7"
+                  margin={50}
+                  size={30}
+                />
+              </div>
+            }
           </Row>
         </Container>
+
+        {/* 상품 더보기 기능 만들기
+          더보기 버튼 클릭 시 axios를 사용하여 데이터 요청
+          받아온 결과를 전역 상태에 추가하기 위해 slice에 리듀서 추가 및 export 
+          스토어에 dispatch로 요청 보내기 */}
+        {/* HTTP 요청 코드를 함수로 만들어서 api 폴더로 추출 */}
+        <Button variant='secondary' className='mb-4' onClick={handleGetMoreProducts}>
+          더보기
+        </Button>
+
+        {/* thunk를 이용한 비동기 작업 처리하기 */}
+        <Button variant='secondary' className='mb-4' onClick={handleGetMoreProductsAsync}>
+          더보기 {status}
+        </Button>
       </section>
     </>
   );

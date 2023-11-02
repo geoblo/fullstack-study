@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getSelectedProduct, selectSelectedProduct } from '../features/product/productSlice';
+import { clearSelectedProduct, getSelectedProduct, selectSelectedProduct } from '../features/product/productSlice';
 import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
 import { toast } from 'react-toastify';
@@ -23,6 +23,9 @@ function ProductDetail(props) {
   const dispatch = useDispatch();
   const product = useSelector(selectSelectedProduct);
 
+  // 숫자 포맷 적용
+  const formatter = new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW' });
+
   const [showInfo, setShowInfo] = useState(true); // Info Alert창 상태
   const [orderCount, setOrderCount] = useState(1); // 주문수량 상태
 
@@ -39,6 +42,11 @@ function ProductDetail(props) {
       }
     };
     fetchProductById();
+
+    // 상세 페이지가 언마운트 될 때 전역 상태 초기화
+    return () => {
+      dispatch(clearSelectedProduct());
+    };
   }, []);
 
   useEffect(() => {
@@ -85,7 +93,7 @@ function ProductDetail(props) {
         <Col md={6}>
           <h4 className='pt-5'>{product.title}</h4>
           <p>{product.content}</p>
-          <p>{product.price}원</p>
+          <p>{formatter.format(product.price)}원</p>
 
           <Col md={4} className='m-auto mb-3'>
             <Form.Control type="text" value={orderCount} onChange={handleChangeOrderCount} />
