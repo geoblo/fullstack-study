@@ -2,18 +2,18 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cartList: [
-    {
-      id: '1',
-      title: "Arcsaber 11 Pro",
-      price: 299000,
-      count: 2
-    },
-    {
-      id: '3',
-      title: "Aerus Z",
-      price: 199000,
-      count: 1
-    },
+    // {
+    //   id: '1',
+    //   title: "Arcsaber 11 Pro",
+    //   price: 299000,
+    //   count: 2
+    // },
+    // {
+    //   id: '3',
+    //   title: "Aerus Z",
+    //   price: 199000,
+    //   count: 1
+    // },
   ],
 };
 
@@ -34,13 +34,28 @@ const cartSlice = createSlice({
     // Quiz: 초기값과 동일한 형태의 객체를 넘겨주면 cartList에 아이템을 추가하는 리듀서 만들기
     // 이미 들어있는 상품이면 수량만 증가
     // 장바구니에 없는 상품이면 새롭게 추가
-    addItemToCart: () => {
-      // payload로 { id, title, price, count }; 객체를 받아옴
+    // payload로 { id, title, price, count }; 객체를 받아옴
+    addItemToCart: (state, { payload: item }) => {
+      console.log(item);
+      const targetItem = state.cartList.find(cart => cart.id === item.id);
+      if (targetItem) {
+        targetItem.count += item.count;
+      } else {
+        state.cartList.push(item);
+      }
     },
+    // Quiz: 장바구니에서 삭제하는 리듀서 만들기
+    removeItemFromCart: () => {
+      
+    }
   }
 });
 
-export const { increaseCount, decreaseCount } = cartSlice.actions;
+export const { 
+  increaseCount, 
+  decreaseCount,
+  addItemToCart
+} = cartSlice.actions;
 
 export const selectCartList = state => {
   console.log(state);
