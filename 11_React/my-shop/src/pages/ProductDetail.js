@@ -103,6 +103,7 @@ function ProductDetail(props) {
           </Col>
 
           <Button variant='primary'>주문하기</Button>
+          <Button variant='warning'>장바구니</Button>
         </Col>
       </Row>
 
