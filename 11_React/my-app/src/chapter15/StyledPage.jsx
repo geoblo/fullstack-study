@@ -48,11 +48,11 @@ const Button = styled.button`
   width: ${props => props.width || '100px'}; // 기본값 설정
   height: ${props => props.height || '40px'}; // 기본값 설정
   background: ${props => {
-    console.log(props);
+    // console.log(props);
     
-    return props.dark ? 'black' : 'white';
+    return props.$dark ? 'black' : 'white';
   }};
-  color: ${props => props.dark ? 'white' : 'black'};
+  color: ${props => props.$dark ? 'white' : 'black'};
   border: 2px solid black;
   cursor: pointer;
 
@@ -63,7 +63,7 @@ const Button = styled.button`
 
   /* 4. 여러 줄의 스타일 구문을 조건부로 설정해야 하는 경우 css를 불러와 사용 */
   ${props => 
-    props.inverted &&
+    props.$inverted &&
     css`
       background: white;
       color: #1f1f1f;
@@ -94,11 +94,15 @@ function StyledPage(props) {
       <Button width="200px" height="60px">Normal</Button>
 
       {/* ={true} 는 생략 가능 */}
-      <Button dark>Dark</Button>
+      {/* $는 Transient props
+        스타일 지정만을 위한 prop이 
+        기본 React 노드로 전달되거나 DOM 요소로 렌더링되는 것을 방지하려면 
+        $ 기호를 붙여 임시 prop으로 전환할 수 있다. */}
+      <Button $dark>Dark</Button>
 
-      <Button inverted>Dark</Button>
+      <Button $inverted>Inverted</Button>
 
-      <RoundedButton>Rounded</RoundedButton>
+      <RoundedButton disabled>Rounded</RoundedButton>
     </Wrapper>
   );
 }
