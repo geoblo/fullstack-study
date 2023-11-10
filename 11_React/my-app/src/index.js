@@ -52,6 +52,7 @@ import TimerContainer from './chapter7/7.3/ex3/TimerContainer';
 import ApiRequest from './chapter17/ApiRequest';
 import ReduxTestApp from './chapter18/ReduxTestApp';
 import { store } from './chapter18/app/store';
+import AppContainer from './components/AppContainer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -138,7 +139,7 @@ root.render(
   // <ProfileCard />
 
   // 15장 예제
-  <StyledPage />
+  // <StyledPage />
   // <Blocks />
   // <ThemeApp />
 
@@ -155,6 +156,10 @@ root.render(
   // <Provider store={store}>
   //   <ReduxTestApp />
   // </Provider>
+
+  // 수업 외: 다양한 컴포넌트 예제
+  // npm install framer-motion polished react-icons styled-reset swiper @fullcalendar/core @fullcalendar/react @fullcalendar/daygrid @lottiefiles/lottie-player react-youtube
+  <AppContainer />
 );
 
 // If you want to start measuring performance in your app, pass a function
