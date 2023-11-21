@@ -20,3 +20,6 @@ console.log(myURL.searchParams.getAll('filter'));
 
 console.log('searchParams.toString():', myURL.searchParams.toString()); // searchParams 객체를 다시 문자열로 변환
 myURL.search = myURL.searchParams.toString(); // 이 문자열을 search에 대입하면 주소 객체에 반영됨
+
+// 예전에는 노드의 querystring 모듈 사용했으나
+// 요새는 searchParams 객체 사용으로 대체됨(권장 방식)
