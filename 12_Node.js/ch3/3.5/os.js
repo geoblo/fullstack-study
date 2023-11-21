@@ -15,5 +15,9 @@ console.log('os.homedir():', os.homedir());
 console.log('os.tmpdir():', os.tmpdir());
 
 console.log('cpu 정보--------------------------------------');
+console.log('os.cpus():', os.cpus()); // 컴퓨터의 코어 정보
+console.log('os.cpus().length:', os.cpus().length); // 컴퓨터의 코어 개수만큼 서버를 띄우고 싶을 때 활용
 
 console.log('메모리 정보-----------------------------------');
+console.log('os.freemem():', os.freemem());
+console.log('os.totalmem():', os.totalmem());
