@@ -34,7 +34,7 @@ http.createServer(async (req, res) => {
       } catch (err) {
         console.error(err);
       }
-    }else if (req.method === 'POST') {
+    } else if (req.method === 'POST') {
       if (req.url === '/user') { // 폼 제출(submit) 시 실행, 사용자를 등록하는 로직
         let body = '';
         // 요청의 body를 stream 형식으로 받음
