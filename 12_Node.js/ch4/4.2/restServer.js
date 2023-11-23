@@ -48,7 +48,7 @@ http.createServer(async (req, res) => {
           const { name } = JSON.parse(body); // json 문자열을 객체로 변환
           const id = Date.now(); // id값 임의 생성
           users[id] = name;
-          res.writeHead(201, { 'Content-Type': 'text/plain; charset=utf-8' }); // 201: Created(생성됨)
+          res.writeHead(201, { 'Content-Type': 'text/plain; charset=utf-8' }); // 201: Created(생성됨) - 그냥 200 보내도 되는데 조금 더 의미있게 쓰려면 201
           res.end('등록 성공'); // Response에서 응답 데이터 확인 가능
         });
       }
@@ -92,3 +92,8 @@ http.createServer(async (req, res) => {
 
 // (참고) HTTP 상태 코드
 // https://developer.mozilla.org/ko/docs/Web/HTTP/Status
+
+// 위 코드는 서버의 동작 흐름(맥락)만 이해할 것!
+// 기본적으로는 Node.js의 http 모듈만으로도 서버 구성이 가능하나 코드가 상당히 복잡하고 지저분
+// 실제로는 웹 프레임워크 사용하여 더 효율적으로 작성
+// 예: Express, koa, fastify 등
