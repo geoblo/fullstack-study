@@ -3,6 +3,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 // dotenv: 환경변수(시스템에 따른 설정값이나 비밀키 등) 관리
 // 별도의 파일로 관리하는 이유는 보안과 설정의 편의성 때문
@@ -49,6 +50,18 @@ app.use(express.urlencoded({ extended: true }));
 // true를 추천, qs > querystring 보다 편의 및 강력한 기능 지원
 // 다만 FormData로 파일을 보내는 경우 urlencoded()로 처리 못함 => 이 때는 multer 사용
 
+// express-session: 요청마다 개인의 저장 공간을 만들어주는 세션 관리용 미들웨어
+// 직접 만들어 복잡하게 사용하던 세션을 편하게 관리
+app.use(session({
+  resave: false, // 요청이 왔을 때 세션에 수정사항이 생기지 않아도 다시 저장할지 여부
+  saveUninitialized: false, // 세션에 저장할 내역이 없더라도 처음부터 세션을 생성할지 여부
+  secret: process.env.COOKIE_SECRET, // 비밀키: 세션 하나 만들 때 세션 문자열(=세션 ID)을 암호화해서 보냄
+  cookie: { // 세션 쿠키에 대한 설정 
+    httpOnly: true, // JS에서 쿠키에 접근하지 못하게 설정
+  },
+  name: 'session-cookie', // 세션 쿠키 이름에 대한 설정, 기본값은 'connect.sid'
+}));
+
 app.get('/', (req, res) => {
   // 쿠키 사용하기
   // 이전 방식: 임의로 만든 parseCookies() 함수를 사용해서 객체로 변환
@@ -78,6 +91,14 @@ app.get('/', (req, res) => {
 
   // req.body: 요청 본문에 담겨오는 데이터를 바로 쓸 수 있음
   // console.log(req.body.name); // 나중에 직접 테스트 해볼것!
+
+  // req.session: 요청을 보낸 사용자에 대한 고유한 세션
+  req.session.name = 'gonikim'; // 세션 등록하면 세션 쿠키는 알아서 내려줌
+  // 세션 ID 확인
+  // 해당 세션 ID로 세션에 등록된 정보가 없으면 세션 ID는 요청마다 새롭게 생성됨
+  console.log(req.session.id);
+  console.log(req.sessionID);
+  console.log(req.session);
 
   res.sendFile(path.join(__dirname, '/index.html'));
 });
