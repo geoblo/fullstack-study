@@ -54,13 +54,13 @@ app.get('/', (req, res) => { // GET 요청이고 url이 '/' 일 때
   // console.log('모든 요청에 실행하고 싶어요.');
 
   // 응답 내려주기
-  // res.send('<h1>hello express</h1>'); // res.writeHead(200, {}) + res.end() 를 합친것!
+  // res.send('hello express'); // res.writeHead(200, {}) + res.end() 를 합친것!
 
   // html 파일 서빙하기
   res.sendFile(path.join(__dirname, '/index.html')); // 알아서 fs 모듈로 html 파일을 읽어서 부름
 
   // 코린이들이 자주 하는 실수
-  // 한 라운터에서 여러 개의 응답을 보내면?
+  // 한 라우터에서 여러 개의 응답을 보내면?
   // Cannot set headers after they are sent to the client 에러 발생
   // 해석: 클라이언트에 헤더를 보낸 후에는 헤더를 설정할 수 없습니다.
   // 요청 한 번에 응답은 한 번만 해야됨
@@ -69,8 +69,9 @@ app.get('/', (req, res) => { // GET 요청이고 url이 '/' 일 때
   // res.send('hello express');
   // res.sendFile(path.join(__dirname, '/index.html'));
   // res.json({ name: 'goni', age: 22 }); // res.writeHead(200, { .. }) + res.end(JSON.stringify({ .. })) 를 합친것!
-  // res.render();
-  // 그 외 end(), redirect()도 있음
+  // res.render(); // 템플릿 엔진 사용하여 응답을 보낼 때
+  // res.end(); // 데이터 없이 응답을 보낼 때
+  // res.redirect('/'); // '/'로 이동하라는 응답을 보낼 때
 
   // 여기서 참고로
   // sendFile() / render()는 SSR 방식의 웹서버 만들 때 많이 사용
@@ -110,18 +111,19 @@ app.get('/category/:name', (req, res) => {
 
 // 404 처리 미들웨어
 // 따로 404 처리 안만들면 Express가 알아서 기본적인 처리를 해줌
+// 위 라우터에 하나라도 안걸리면 해당 미들웨어 실행됨
 app.use((req, res, next) => {
   res.status(404).send('404 못 찾겠어요.');
 });
 
 // 에러 처리 미들웨어
+// 따로 에러 처리 안만들면 Express가 알아서 기본적인 처리를 해줌
 // (중요) 반드시 매개변수 4개를 다 작성해야 됨!
 app.use((err, req, res, next) => {
   console.error(err);
   // res.send('에러가 나서 보여주는 내용'); // 응답 코드를 따로 작성하지 않으면 기본값 200
   res.status(500).send('에러가 나서 보여주는 내용');
 });
-
 
 // 서버 연결
 // app.listen(포트, 콜백): 몇 번 포트에서 서버를 실행할지 지정 
@@ -131,5 +133,22 @@ app.listen(app.get('port'), () => {
 });
 // 서버 실행법 3가지
 // 1) node app
-// 2) nodemon app
+// 2) nodemon app(글로벌 설치 또는 npx 사용 시)
 // 3) npm start
+
+
+// (정리)
+// 서버 코드의 구조(위에서부터 차례대로)
+// 1) 필요한 모듈 가져오기 => require()
+// 2) express()로 app 만들기
+// 3) app 관련 설정들 => app.set()
+// 4) 공통 미들웨어들 넣기
+// 5) 라우터들 작성
+// 6) 404 또는 에러 처리 미들웨어
+
+// Express(웹 프레임워크) 장점
+// 1) 복잡하게 if문으로 분기 처리 하지 않아도 됨
+// 2) 간결한 코드, 쉬운 응답 처리
+// 3) 기본적인 에러 처리를 해줌
+// 예1: /abc 와 같은 없는 경로로 접속 시 알아서 404 에러를 보내줌
+// 예2: 서버쪽 에러 발생 시 알아서 500 에러를 보내줌
