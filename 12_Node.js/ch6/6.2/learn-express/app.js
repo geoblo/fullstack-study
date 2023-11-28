@@ -107,11 +107,11 @@ app.get('/upload', (req, res) => {
 // multer의 4가지 미들웨어
 // 1) 파일을 하나만 업로드하는 경우 single 미들웨어 사용
 // => 인자값은 input 태그의 name 속성과 일치해야 됨
-app.post('/upload', upload.single('image'), (req, res) => { // 라우터 전에 미들웨어로 장착
-  console.log(req.file); // 업로드 성공 시 정보가 저장됨
-  console.log(req.body); // { title: '' }
-  res.send('ok');
-});
+// app.post('/upload', upload.single('image'), (req, res) => { // 라우터 전에 미들웨어로 장착
+//   console.log(req.file); // 업로드 성공 시 정보가 저장됨
+//   console.log(req.body); // { title: '' }
+//   res.send('ok');
+// });
 // 2) 여러 파일을 업로드하는 경우 array 미들웨어 사용
 // app.post('/upload', upload.array('image'), (req, res) => {
 //   console.log(req.files); // 이 때는 file이 아닌 files임
@@ -119,15 +119,15 @@ app.post('/upload', upload.single('image'), (req, res) => { // 라우터 전에 
 //   res.send('ok');
 // });
 // 3) 여러 파일(input 태그를 여러 개 사용해서 name이 다른 경우)을 업로드하는 경우 fields 미들웨어 사용
-// app.post('/upload', 
-//   upload.fields([{ name: 'image1' }, { name: 'image2' }]), 
-//   (req, res) => {
-//     console.log(req.files.image1);
-//     console.log(req.files.image2);
-//     console.log(req.body);
-//     res.send('ok');
-//   }
-// );
+app.post('/upload', 
+  upload.fields([{ name: 'image1' }, { name: 'image2' }]), 
+  (req, res) => {
+    console.log(req.files.image1);
+    console.log(req.files.image2);
+    console.log(req.body);
+    res.send('ok');
+  }
+);
 // 4) 멀티파트로 보내는데 파일을 업로드하지 않을 때(잘 안씀)
 // app.post('/upload', upload.none(), (req, res) => {
 //   console.log(req.files); // undefined
