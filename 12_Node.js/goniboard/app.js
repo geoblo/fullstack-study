@@ -8,11 +8,16 @@ const path = require('path');
 // 기본적인 서버 구조 작성하기
 // 1) dotenv 설정
 dotenv.config();
+// 라우터 가져오기
+const indexRouter = require('./routes');
+// DB 연결 함수 가져오기
+const { connect } = require('./database');
 
 // 2) app 관련 설정들(전역속성) 설정
 const app = express();
 app.set('port', process.env.PORT || 8080);
 app.set('view engine', 'ejs'); // view engine의 확장자 지정
+connect(); // 몽고디비에 연결
 
 // 3) 공통 미들웨어 설정
 // (morgan, static, body-parser, cookie-parser, express-session)
@@ -30,6 +35,9 @@ app.use(session({
     secure: false,
   },
 }));
+
+// 라우터를 미들웨어로 등록
+app.use('/', indexRouter);
 
 // 4) 404 처리 미들웨어
 app.use((req, res, next) => {
