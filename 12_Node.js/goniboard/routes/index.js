@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 // GET /insert 라우터
 // DB에 데이터 저장하기 테스트(테스트 후 데이터 삭제)
 router.get('/insert', (req, res) => {
-  db.collection('post').insertOne({ title: '제발 들어가라' });
+  db.collection('post').insertOne({ title: '제발 들어가라', content: '들어갔니?' });
   res.send('데이터 저장 완료');
 });
 
