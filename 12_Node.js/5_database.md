@@ -84,7 +84,7 @@ $min(기존값보다 적을 때만 변경)
 $rename(key값 이름 변경) 등
 
 - 동시에 여러 document 수정은 updateMany()
-like 항목이 10 이상인 document 전부 수정? 
+like 항목이 10 초과인 document 전부 수정? 
 비교 연산자: &gt(초과), $gte(이상), &lt(미만), $lte(이하), $ne(not equal)
 await db.collection('post').updateMany({ like: { $gt: 10 } }, { 
   $set: {

@@ -162,12 +162,39 @@ router.patch('/:id', async (req, res, next) => {
     });
   } catch (err) {
     console.error(err);
+
+    // 보통 CSR 방식으로 개발 시 응답으로 json 데이터를 내려줌
     res.json({
       flag: false,
       message: '수정 실패'
     });
   }
 });
+
+// 글 삭제 기능 만들기
+// 1) 글 삭제 버튼 누르면 해당 글 삭제 요청 보내기
+// 2) 서버는 확인 후 해당 글을 DB에서 삭제
+
+// DELETE /post/:id 라우터
+router.delete('/:id', async (req, res) => {
+  try {
+    await db.collection('post').deleteOn({ _id: new ObjectId(req.params.id) });
+    res.json({
+      message: '삭제 성공'
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      message: '삭제 실패'
+    });
+  }
+});
+
+// (정리) 서버로 데이터 보내는 방법
+// 1) form 태그
+// 2) Ajax 방식
+// 3) 라우트 매개변수(URL 파라미터)
+// 4) 쿼리스트링
 
 
 module.exports = router;
