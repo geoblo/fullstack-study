@@ -12,8 +12,9 @@ a {
 
 nav {
   display: flex;
-  padding: 15px;
+  justify-content: space-between;
   align-items: center;
+  padding: 15px;
   background : white;
 }
 nav a {
