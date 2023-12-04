@@ -64,7 +64,7 @@
   <!-- 페이지 이동 버튼 -->
   <div class="pagination-bg">
     <% for (let i = 1; i <= numOfPage; i++) { %>
-      <a href="/post?page=<%= i %>">
+      <a href="/post?page=<%= i %>" class="<%= i == currentPage ? 'active' : '' %>">
         <%= i %>
       </a>
     <% } %>
