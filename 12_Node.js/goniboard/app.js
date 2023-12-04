@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const dotenv = require('dotenv');
 const path = require('path');
+const passport = require('passport');
 
 // 기본적인 서버 구조 작성하기
 // 1) dotenv 설정
@@ -14,9 +15,12 @@ const postRouter = require('./routes/post');
 const userRouter = require('./routes/user');
 // DB 연결 함수 가져오기
 const { connect } = require('./database');
+// ./passport/index.js 가져오기
+const passportConfig = require('./passport');
 
 // 2) app 관련 설정들(전역속성) 설정
 const app = express();
+passportConfig(); // 패스포트 설정 실행
 app.set('port', process.env.PORT || 8080);
 app.set('view engine', 'ejs'); // view engine의 확장자 지정
 connect(); // 몽고디비에 연결
@@ -37,6 +41,10 @@ app.use(session({
     secure: false,
   },
 }));
+// passport 미들웨어 설정
+app.use(passport.initialize()); // 요청 객체에 passport 설정을 심음(req.isAuthenticated, req.login, req.logout 등)
+app.use(passport.session()); // req.session 객체에 passport 정보를 저장
+// req.session 객체는 express-session에서 생성하는 것이므로 passport 미들웨어는 express-session 미들웨어보다 뒤에 연결해야 함
 
 // 라우터를 미들웨어로 등록
 app.use('/', indexRouter);
