@@ -223,6 +223,8 @@ router.get('/', async (req, res) => {
   // 페이지네이션 구현(2)
   // 근데 데이터의 양이 너무 많아 skip(1000000)을 많이 하게 되면 성능에 안좋음
   // => 너무 많이 skip 하지 못하게 막거나 다른 페이지네이션 방법 구현
+  // 장점: 매우 빠름(_id 기준으로 뭔가 찾는건 DB가 가장 빠르게 하는 작업임)
+  // 단점: 바로 다음 게시물만 가져올 수 있어서 1페이지 보다가 3페이지로 이동 불가
   let posts;
   if (req.query.nextId) {
     posts = await db.collection('post')
