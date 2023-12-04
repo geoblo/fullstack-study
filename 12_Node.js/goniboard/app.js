@@ -11,6 +11,7 @@ dotenv.config();
 // 라우터 가져오기
 const indexRouter = require('./routes');
 const postRouter = require('./routes/post');
+const userRouter = require('./routes/user');
 // DB 연결 함수 가져오기
 const { connect } = require('./database');
 
@@ -40,6 +41,7 @@ app.use(session({
 // 라우터를 미들웨어로 등록
 app.use('/', indexRouter);
 app.use('/post', postRouter);
+app.use('/user', userRouter);
 
 // 4) 404 처리 미들웨어
 app.use((req, res, next) => {
