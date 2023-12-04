@@ -41,6 +41,7 @@ module.exports = () => {
 };
 
 // 전체 과정
+// 로그인 과정
 // 1. /user/login 라우터를 통해 로그인 요청이 들어옴
 // 2. 라우터에서 passport.authenticate 메서드 호출
 // 3. 로그인 전략(LocalStrategy) 수행
