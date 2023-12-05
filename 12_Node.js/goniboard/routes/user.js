@@ -96,6 +96,9 @@ router.post('/login', (req, res, next) => {
     }
     if (!user) return res.status(401).json(info.message);
 
+    // login(): 사용자 정보를 세션에 저장하는 작업을 시작
+    // passport.serializeUser가 호출됨
+    // user 객체가 serializeUser로 넘어가게 됨
     req.login(user, (loginError) => {
       if (loginError) return next(loginError);
       res.redirect('/'); // 로그인 완료 시 실행할 코드
