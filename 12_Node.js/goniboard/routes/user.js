@@ -106,4 +106,19 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
+// GET /user/logout
+router.get('/logout', (req, res, next) => {
+  // logout(): req.user 객체와 req.session 객체를 제거
+  req.logout((logoutError) => { // 제거 후 콜백 함수가 실행됨
+    if (logoutError) return next(logoutError);
+    res.redirect('/'); // 로그아웃 완료 시 실행할 코드
+  });
+});
+// (정리) 로그인 기능 요약 정리
+// 1. 로그인 성공하면 세션 만들고 세션 ID가 담긴 쿠키(세션 쿠키)를 사용자 브라우저에 저장
+// => req.login() -> passport.serializeUser() 쓰면 자동 처리
+// 2. 로그인 한 사용자가 서버에 요청을 보낼 때마다 쿠키가 같이 제출되는데 확인
+// => passport.deserializeUser() 쓰면 자동 처리
+// 3. 모든 라우터(API)에서 req.user 라고 쓰면 현재 로그인된 사용자 정보를 사용 가능
+
 module.exports = router;
