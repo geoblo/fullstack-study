@@ -108,7 +108,7 @@ app.get('/upload', (req, res) => {
 // 1) 파일을 하나만 업로드하는 경우 single 미들웨어 사용
 // => 인자값은 input 태그의 name 속성과 일치해야 됨
 // app.post('/upload', upload.single('image'), (req, res) => { // 라우터 전에 미들웨어로 장착
-//   console.log(req.file); // 업로드 성공 시 정보가 저장됨
+//   console.log(req.file); // 업로드 성공 시 파일 정보가 저장됨
 //   console.log(req.body); // { title: '' }
 //   res.send('ok');
 // });
