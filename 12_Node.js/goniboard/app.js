@@ -5,6 +5,7 @@ const session = require('express-session');
 const dotenv = require('dotenv');
 const path = require('path');
 const passport = require('passport');
+const MongoStore = require('connect-mongo');
 
 // 기본적인 서버 구조 작성하기
 // 1) dotenv 설정
@@ -40,6 +41,10 @@ app.use(session({
     httpOnly: true,
     secure: false,
   },
+  store: MongoStore.create({
+    mongoUrl: `mongodb+srv://${process.env.MONGO_ID}:${process.env.MONGO_PASSWORD}@cluster0.fkxbaqn.mongodb.net/`,
+    dbName: 'board'
+  }),
 }));
 // passport 미들웨어 설정
 app.use(passport.initialize()); // 요청 객체에 passport 설정을 심음(req.isAuthenticated, req.login, req.logout 등)

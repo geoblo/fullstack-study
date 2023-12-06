@@ -263,7 +263,7 @@ router.get('/', async (req, res) => {
   // 페이지네이션 구현(1)
   // 페이지 번호는 쿼리 스트링 또는 URL 파라미터 사용
   // 1 -> 0, 2 -> 5, 3 -> 10
-  // const posts = await db.collection('post').find().skip((req.query.page - 1) * 5).limit(5).toArray();
+  const posts = await db.collection('post').find().skip((req.query.page - 1) * 5).limit(5).toArray();
 
   // 페이지 계산
   // 1~5 -> 1, 6~10 -> 2
@@ -277,16 +277,22 @@ router.get('/', async (req, res) => {
   // => 너무 많이 skip 하지 못하게 막거나 다른 페이지네이션 방법 구현
   // 장점: 매우 빠름(_id 기준으로 뭔가 찾는건 DB가 가장 빠르게 하는 작업임)
   // 단점: 바로 다음 게시물만 가져올 수 있어서 1페이지 보다가 3페이지로 이동 불가
-  let posts;
-  if (req.query.nextId) {
-    posts = await db.collection('post')
-      .find({ _id: { $gt: new ObjectId(req.query.nextId) } }) // ObjectId로 대소 비교 가능
-      .limit(5).toArray();
-  } else {
-    posts = await db.collection('post').find().limit(5).toArray(); // 처음 5개
-  }
+  // let posts;
+  // if (req.query.nextId) {
+  //   posts = await db.collection('post')
+  //     .find({ _id: { $gt: new ObjectId(req.query.nextId) } }) // ObjectId로 대소 비교 가능
+  //     .limit(5).toArray();
+  // } else {
+  //   posts = await db.collection('post').find().limit(5).toArray(); // 처음 5개
+  // }
 
   res.render('list', { posts, numOfPage, currentPage });
 });
+
+// 검색 기능 만들기
+// 1) 검색 UI(input과 버튼)에서 서버로 검색어 전송
+// 2) 서버는 그 검색어가 포함된 document를 찾음
+// 3) 그 결과를 ejs에 넣어서 보내줌
+
 
 module.exports = router;
