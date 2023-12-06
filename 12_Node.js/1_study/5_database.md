@@ -71,7 +71,12 @@ Allow access from anywhere를 누르거나 0.0.0.0/0 을 추가하기
 8. (참고)
 - MongoDB Document
 https://www.mongodb.com/docs/
-- MongoDB 연산자
+- MongoDB와 몽구스 시작하기
+https://www.mongodb.com/developer/languages/javascript/getting-started-with-mongodb-and-mongoose/
+- Mongoose 사용하기
+https://velog.io/@ckstn0777/Mongoose-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+
+9. MongoDB 연산자
 https://www.mongodb.com/docs/v7.0/reference/operator/
 
 - 업데이트 연산자
@@ -92,7 +97,16 @@ await db.collection('post').updateMany({ like: { $gt: 10 } }, {
   } 
 });
 
-- MongoDB와 몽구스 시작하기
-https://www.mongodb.com/developer/languages/javascript/getting-started-with-mongodb-and-mongoose/
-- Mongoose 사용하기
-https://velog.io/@ckstn0777/Mongoose-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+10. DB가 데이터를 찾는 방법
+title이 '제발'이랑 일치하는 document를 가져오라고 find()를 쓰면
+컬렉션의 모든 document를 하나하나 전부 다 검사함
+document에 뭐가 적혀있는지 모르기 때문에 당연히 모든 document를 까볼 수 밖에 없음
+그럼 document가 많아질 수록 점점 느리게 동작함
+
+근데 다행히 이걸 해결할 수 있는 방법도 있는데 
+index라는걸 미리 만들어두면 document가 1억개 있어도 원하는 것만 빠르게 찾아올 수 있음
+
+11. index 동작원리
+예시: 소주 뚜껑 업 & 다운 게임
+1부터 100까지 뚜껑 안쪽에 적힌 숫자를 맞춰야 할 때
+어떻게 질문해야하죠?
