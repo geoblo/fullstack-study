@@ -32,6 +32,15 @@
     <% } %>
   </div>
 
+  <!-- 페이지 이동 버튼 -->
+  <div class="pagination-bg">
+    <% for (let i = 1; i <= numOfPage; i++) { %>
+      <a href="/post/search?page=<%= i %>&keyword=<%= keyword %>" class="<%= i == currentPage ? 'active' : '' %>">
+        <%= i %>
+      </a>
+    <% } %>
+  </div>
+
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/js/list.js"></script>
 </body>
