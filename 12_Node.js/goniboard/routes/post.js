@@ -84,7 +84,7 @@ router.get('/write', isLoggedIn, (req, res) => {
 // 업로드 완료 시 이미지의 URL도 생성해줌(req.file에 들어있음)
 router.post('/write', isLoggedIn, upload.single('img'), async (req, res, next) => {
   console.log(req.file); // 업로드 후 S3 객체 정보
-  console.log(req.file.location); // 이미지의 URL, img 태그 src 속성에 넣으면 동작
+  console.log(req.file?.location); // 이미지의 URL, img 태그 src 속성에 넣으면 동작
 
   console.log(req.body);
   // 클라이언트가 보낸 데이터 -> 요청 본문에 담김 -> body-parser가 분석해서 req.body에 객체로 저장
@@ -106,7 +106,24 @@ router.post('/write', isLoggedIn, upload.single('img'), async (req, res, next) =
       await db.collection('post').insertOne({ 
         title, 
         content,
-        imgUrl: req.file.location // 이미지 URL을 글과 함께 DB에 저장
+        // 이미지 URL을 글과 함께 DB에 저장
+        // imgUrl: req.file ? req.file.location : '',
+        imgUrl: req.file?.location || '',
+        // 글 등록 시 작성자 정보 넣기
+        user: req.user._id,
+        username: req.user.username,
+        // username(수정 가능한 정보라고 가정) 넣었을 때 문제점:
+        // 해당 유저가 글을 여러개 작성했는데 username이 바뀌면? 전부 찾아서 수정해야 됨
+        // 관계형DB: 사용자의 _id만 적어두고 JOIN을 써서 사용자의 정보를 가져와 합침
+        // 비관계형DB: 그냥 사용자 정보를 그대로 넣는 것이 관습임, 장점은 다른 컬렉션을 찾아볼 필요 없음
+        // 단점은 바뀐 정보 전부 찾아서 업데이트 하거나 업데이트 안됐으면 정보가 부정확 할 수 있음
+
+        // (비관계형DB 일 때) 개발자 선택 사항임
+        // 1. DB 입출력 속도 up, 데이터 정확도 down => 바뀔수 있는 정보도 같이 저장
+        // 2. DB 입출력 속도 down, 데이터 정확도 up => _id값만 저장(추천)
+        // 2번을 선택하면 그 안에서도 선택지가 다양함
+        // 1) findOne을 2번 쓰던가(글도 가져오고, 사용자도 가져오고)
+        // 2) 몽구스의 populate, 몽고디비의 aggregate 연산자 중 $lookup
       });
 
       // 동기식 요청이면 다른 페이지로 이동
@@ -202,23 +219,27 @@ router.patch('/:id', async (req, res, next) => {
     const content = req.body.content;
 
     // 어떤 document를 찾아서 어떤 내용으로 수정할지 인자값 2개 전달
-    await db.collection('post').updateOne({
-      _id: new ObjectId(req.params.id)
+    const result = await db.collection('post').updateOne({
+      _id: new ObjectId(req.params.id),
+      user: new ObjectId(req.user._id) // 본인이 쓴 글만 수정되도록 조건 추가
     }, {
       $set: { title, content }
     });
+
+    if (result.modifiedCount === 0) {
+      throw new Error('수정 실패');
+    }
 
     res.json({
       flag: true,
       message: '수정 성공'
     });
   } catch (err) {
-    console.error(err);
-
     // 보통 CSR 방식으로 개발 시 응답으로 json 데이터를 내려줌
+    console.error(err);
     res.json({
       flag: false,
-      message: '수정 실패'
+      message: err.message
     });
   }
 });
@@ -230,14 +251,25 @@ router.patch('/:id', async (req, res, next) => {
 // DELETE /post/:id 라우터
 router.delete('/:id', async (req, res) => {
   try {
-    await db.collection('post').deleteOne({ _id: new ObjectId(req.params.id) });
+    const result = await db.collection('post').deleteOne({ 
+      _id: new ObjectId(req.params.id),
+      user: new ObjectId(req.user._id) // 본인이 쓴 글만 삭제되도록 조건 추가
+    });
+    console.log(result);
+
+    if (result.deletedCount === 0) {
+      throw new Error('삭제 실패');
+    }
+
     res.json({
+      flag: true,
       message: '삭제 성공'
     });
   } catch (err) {
     console.error(err);
     res.status(500).json({
-      message: '삭제 실패'
+      flag: false,
+      message: err.message
     });
   }
 });
