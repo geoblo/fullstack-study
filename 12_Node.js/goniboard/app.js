@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 const passport = require('passport');
 const MongoStore = require('connect-mongo');
+const cors = require('cors');
 
 // 기본적인 서버 구조 작성하기
 // 1) dotenv 설정
@@ -25,6 +26,14 @@ passportConfig(); // 패스포트 설정 실행
 app.set('port', process.env.PORT || 8080);
 app.set('view engine', 'ejs'); // view engine의 확장자 지정
 connect(); // 몽고디비에 연결
+
+// cors 설정
+// 응답에 Access-Control-Allow-Origin 헤더가 자동으로 추가됨
+app.use(cors({
+  credentials: true // 다른 도메인 간에 쿠키가 공유됨
+}));
+// (참고) axios에서도 도메인이 다른데, 쿠키를 공유해야 하는 경우
+// withCredentials: true 옵션을 줘서 요청을 보내야 함
 
 // 3) 공통 미들웨어 설정
 // (morgan, static, body-parser, cookie-parser, express-session)
