@@ -53,6 +53,7 @@ import ApiRequest from './chapter17/ApiRequest';
 import ReduxTestApp from './chapter18/ReduxTestApp';
 import { store } from './chapter18/app/store';
 import AppContainer from './components/AppContainer';
+import { reduxStore } from './components/app/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -158,8 +159,11 @@ root.render(
   // </Provider>
 
   // 수업 외: 다양한 컴포넌트 예제
+  // 아래 패키지 설치 필수
   // npm install framer-motion polished react-icons styled-reset swiper @fullcalendar/core @fullcalendar/react @fullcalendar/daygrid @lottiefiles/lottie-player react-youtube
-  <AppContainer />
+  <Provider store={reduxStore}>
+    <AppContainer />
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

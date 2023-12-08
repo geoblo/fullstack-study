@@ -37,7 +37,7 @@ const StyledButton = styled.button`
   }
 
   /* 색상 */
-  ${({ color: buttonColor, outline }) => {
+  ${({ color: buttonColor, $outline }) => {
     return css`
       background: ${buttonColor};
       &:hover {
@@ -47,7 +47,7 @@ const StyledButton = styled.button`
         background: ${darken(0.1, buttonColor)};
       }
 
-      ${outline &&
+      ${$outline &&
         css`
           color: ${buttonColor};
           background: none;
@@ -78,7 +78,7 @@ const Button = ({
   ...rest
 }) => {
   // console.log(rest);
-  return <StyledButton color={color} size={size} outline={outline} {...rest} />;
+  return <StyledButton color={color} size={size} $outline={outline} {...rest} />;
 };
 
 Button.defaultProps = {

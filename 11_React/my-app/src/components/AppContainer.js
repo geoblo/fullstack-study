@@ -5,6 +5,7 @@ import { MdClose, MdMenu } from "react-icons/md";
 import { Reset } from "styled-reset";
 
 import Main from "./Main";
+import Login from "./Login";
 import SwiperEx from "./SwiperEx";
 import FramerMotionEx from "./FramerMotionEx";
 import FullCalendarEx from "./FullCalendarEx";
@@ -82,7 +83,7 @@ function AppContainer() {
 
         {/* Slide Menu */}
         {/* {showMenu && ( */}
-          <MenuContainer showMenu={showMenu}>
+          <MenuContainer $showMenu={showMenu}>
             <ul>
               <li>메뉴1</li>
               <li>메뉴2</li>
@@ -95,6 +96,7 @@ function AppContainer() {
 
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/swiper" element={<SwiperEx />} />
         <Route path="/motion" element={<FramerMotionEx />} />
         <Route path="/calendar" element={<FullCalendarEx />} />
