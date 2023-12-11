@@ -30,6 +30,7 @@ connect(); // 몽고디비에 연결
 // cors 설정
 // 응답에 Access-Control-Allow-Origin 헤더가 자동으로 추가됨
 app.use(cors({
+  origin: 'http://localhost:3000', // 허용할 오리진 설정
   credentials: true // 다른 도메인 간에 쿠키가 공유됨
 }));
 // (참고) axios에서도 도메인이 다른데, 쿠키를 공유해야 하는 경우
