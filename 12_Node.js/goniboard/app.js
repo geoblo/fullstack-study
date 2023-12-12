@@ -10,7 +10,9 @@ const cors = require('cors');
 
 // 기본적인 서버 구조 작성하기
 // 1) dotenv 설정
-dotenv.config();
+dotenv.config({
+  path: path.join(__dirname, '.env') // 절대 경로 사용
+});
 // 라우터 가져오기
 const indexRouter = require('./routes');
 const postRouter = require('./routes/post');
@@ -25,6 +27,7 @@ const app = express();
 passportConfig(); // 패스포트 설정 실행
 app.set('port', process.env.PORT || 8080);
 app.set('view engine', 'ejs'); // view engine의 확장자 지정
+app.set('views', path.join(__dirname, 'views')); // view engine의 path를 직접 지정
 connect(); // 몽고디비에 연결
 
 // cors 설정
