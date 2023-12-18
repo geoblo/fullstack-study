@@ -49,9 +49,6 @@ const MenuContainer = styled.div`
   right: -50%;
   /* right: -500px; */
 
-  /* TODO: 변환 효과로 슬라이드 메뉴 구현해보기 */
-  /* transform: translateX(); */
-
   background-color: #eaeaea;
   z-index: 9;
   padding: 60px 20px 0;
