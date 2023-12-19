@@ -63,7 +63,17 @@ https://inpa.tistory.com/entry/LINUX-%F0%9F%93%9A-Vi-Vim-%EC%97%90%EB%94%94%ED%8
 10) npm 패키지를 설치하고 서버를 실행
 ~$ npm ci
 ~$ sudo npm i -g pm2
-~$ sudo NODE_ENV=production PORT=80 pm2 start app.js
+~$ sudo NODE_ENV=production PORT=80 pm2 start app.js -i 0
+-i(instance): 멀티 프로세스 옵션, 0은 CPU 코어 개수만큼 프로세스를 생성한다는 뜻
+프로세스 간에 메모리를 공유하지 못하므로 공유하는 것(세션 등)이 없도록 설계
+공유해야하는 데이터가 있다면 데이터베이스를 사용해야 함 
+
+(참고)
+프로세스 종료
+~$ sudo pm2 kill
+
+서버 재시작
+~$ sudo pm2 reload all
 
 로그 확인 명령어 2가지
 ~$ sudo pm2 log
