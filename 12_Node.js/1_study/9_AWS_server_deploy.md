@@ -63,7 +63,7 @@ https://inpa.tistory.com/entry/LINUX-%F0%9F%93%9A-Vi-Vim-%EC%97%90%EB%94%94%ED%8
 10) npm 패키지를 설치하고 서버를 실행
 ~$ npm ci
 ~$ sudo npm i -g pm2
-~$ sudo NODE_ENV=production PORT=80 pm2 start app -i 0
+~$ sudo NODE_ENV=production PORT=80 pm2 start app.js -i 0
 11) 퍼블릭 IP를 확인한 뒤, http://퍼블릭IP로 접속
 위 주소를 다른 기기에서도 입력 후 접속 테스트
 이제 퍼블릭 IP만 알면 다른 사람들도 여러분의 서비스에 접속 가능
