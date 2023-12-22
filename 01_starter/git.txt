@@ -48,7 +48,7 @@ ctrl + s 누르는 것 처럼 5초마다 습관적으로 할 필요는 없고
 7. git remote -v
 원격저장소 정보를 보고 싶을 때
 
-8. git clone https://원격저장소 주소
+8. git clone https://원격저장소주소
 원격저장소에 올린 프로젝트를 내 로컬에 복제(1번만 하면 됨)
 
 9. git pull origin
