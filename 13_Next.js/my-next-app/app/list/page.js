@@ -1,3 +1,6 @@
+import Image from "next/image";
+import fruitsImg from "@/public/fruits0.png";
+
 export default function List() {
   // DB에서 가져온 데이터라고 가정
   const products = ['Apple', 'Orange', 'Grape'];
@@ -35,6 +38,23 @@ export default function List() {
 
               참고 자료: https://nextjs.org/docs/app/building-your-application/optimizing/images
             */}
+
+            {/* 1) 로컬(local) 이미지의 경우 */}
+            {/* import로 이미지 가져오기
+              Next.js가 가져온 이미지로부터 자동으로 width, height를 결정
+              이 값은 이미지가 로딩될 때 layout shift를 방지
+            */}
+            {/* <Image src={fruitsImg} alt="fruits" className="fruits-img" /> */}
+
+            {/* 2) 원격(remote) 이미지의 경우 */}
+            {/* next.config.js에 원격 도메인 설정 필요
+              width, height를 직접 제공해야 됨 */}
+            {/* <Image 
+              src="https://goniboard.s3.ap-northeast-2.amazonaws.com/dog.JPG"
+              alt="dog"
+              width={160}
+              height={160}
+            /> */}
 
             <h4>{product}</h4>
           </div>
