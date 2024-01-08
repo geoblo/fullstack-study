@@ -1,6 +1,9 @@
 import CartItem from "./CartItem";
 
 export default function Cart() {
+  // DB에서 가져온 데이터라고 가정
+  const cartList = ['Orange', 'Grape'];
+
   return (
     <>
       <h4 className="title">장바구니</h4>
@@ -16,8 +19,15 @@ export default function Cart() {
       </div> */}
 
       {/* CartItem 컴포넌트 추출 */}
-      <CartItem />
-      <CartItem />
+      {/* <CartItem />
+      <CartItem /> */}
+
+      {/* Quiz: 반복 렌더링 + props로 데이터 전달 + 데이터 바인딩 */}
+      {cartList.map((cartItem, index) => {
+        return (
+          <CartItem key={index} cartItem={cartItem} />
+        );
+      })}
     </>
   );
 }

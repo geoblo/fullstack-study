@@ -1,9 +1,15 @@
+'use client'
+
 import Image from "next/image";
 import fruitsImg from "@/public/fruits0.png";
+import { useState } from "react";
 
 export default function List() {
   // DB에서 가져온 데이터라고 가정
   const products = ['Apple', 'Orange', 'Grape'];
+
+  // 주문 수량
+  const [orderCount, setOrderCount] = useState([0, 10, 3]);
 
   return (
     <>
@@ -57,6 +63,17 @@ export default function List() {
             /> */}
 
             <h4>{product}</h4>
+
+            {/* 주문 수량 만들기 */}
+            <button type="button" onClick={() => {
+              // state 조작
+            }}>
+              -
+            </button>
+            <span>{orderCount[index]}</span>
+            <button type="button">
+              +
+            </button>
           </div>
         );
       })}
