@@ -1,8 +1,8 @@
 'use client'
+import { useState } from "react";
 
 import Image from "next/image";
 import fruitsImg from "@/public/fruits0.png";
-import { useState } from "react";
 
 export default function List() {
   // DB에서 가져온 데이터라고 가정
